@@ -3,6 +3,7 @@ import java.awt.AWTException;
 import java.awt.event.KeyEvent;
 import java.awt.Frame;
 import processing.serial.*;          // for connection to Arduino
+import java.io.File;
 
 /*
 AUTOMATIC SCREENCAPTURE
@@ -18,13 +19,33 @@ AUTOMATIC SCREENCAPTURE
  
  This sketch uses the Java AWT 'robot' class, which allows you to
  create virtual keystrokes (automatic keyboard shortcuts in VLC).
+ 
+ CHANGE VLC COMMANDS:
+ Depending on how you want to format your screenshots, you may want to
+ change settings in VLC (VLC > Preferences > Video...)
+ 
+ Filename settings: LawAndOrder-$I-$T- (with 'sequential numbering' checked)
+ $I = title # on the disc
+ $T = time in the file as HH_MM_SS
+ 
+ Example resulting filename:
+ LawAndOrder-01-00_01_27-0001.png
+ 
+ A list of variables for screenshot formatting can be found at:
+ http://wiki.videolan.org/Documentation:Play_HowTo/Format_String
+ 
  */
 
-int numFrames = 5;                // how many frames to automatically capture
-int pause = 500;                  // time between pause/next-frame events (ms)
-boolean fastjump = false;         // jump lots of frames (default off)
-int keyIn = 49;                   // value to look for - when received, starts capture process (1 = 49 in ascii)
-boolean minify = false;           // automatically minimize when opened?
+int season = 1;
+int episode = 1;
+
+int numFrames = 5;                         // how many frames to automatically capture
+int pause = 500;                           // time between pause/next-frame events (ms)
+boolean fastjump = false;                  // jump lots of frames (default off)
+int keyIn = 49;                            // value to look for - when received, starts capture process (1 = 49 in ascii)
+boolean minify = false;                    // automatically minimize when opened?
+boolean renameOnExit = true;               // rename files on exit?
+String screenshotFolder = "Screenshots";   // folder where screenshots are stored
 
 boolean captureIt = false;        // flag for running screencapture
 boolean serialConnected = false;  // is there something connected to the serial port?
@@ -68,6 +89,13 @@ void setup() {
   numberBox = new NumberBox(35, 5);
   numberBox.y = (height - numberBox.h) / 2;    // center vertically
   numberBox.printNumFrames();                  // let us know how many frames will be captured
+  
+  // rename files on exit (helps prevent problems of file overwriting, etc)
+  if (renameOnExit) {
+    File parentFolder = new File(sketchPath("")).getParentFile();
+    screenshotFolder = parentFolder.getAbsolutePath() + "/" + screenshotFolder + "/";
+    prepareExitHandler();    // prepare our exit handler
+  }
 }
 
 
