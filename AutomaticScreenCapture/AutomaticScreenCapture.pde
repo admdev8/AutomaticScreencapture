@@ -11,7 +11,7 @@ AUTOMATIC SCREENCAPTURE
  Created as part of a commission by Rhizome.org (a big 'thank you!')
  
  Automatically takes control of VLC using a single button connected
- to an Arduino (for source code and schematic, see the 'ArduinoCode' tab.
+ to an Arduino (for source code and schematic, see the 'ArduinoCode' tab).
  
  Works by pausing your movie, takes a screenshot, advances by N frames
  (taking screenshots along the way), and starts the movie again!

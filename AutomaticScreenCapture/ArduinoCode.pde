@@ -13,6 +13,6 @@
                  |----------------------------------------------------
  
  
- For further details, see the build-log.
+ For further details, see the 'MaterialsAndConstruction' file/build-log on the website.
  
  */
