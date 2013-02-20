@@ -6,20 +6,18 @@ import processing.serial.*;          // for connection to Arduino
 
 /*
 AUTOMATIC SCREENCAPTURE
- Jeff Thompson
+ Jeff Thompson | 2012-13 | www.jeffreythompson.org
  
  Created as part of a commission by Rhizome.org (a big 'thank you!')
  
  Automatically takes control of VLC using a single button connected
- to an Arduino (for source code and schematic, see the ArduinoCode tab.
+ to an Arduino (for source code and schematic, see the 'ArduinoCode' tab.
  
- Works by pausing your movie, takes a screenshot, advances by n frames
+ Works by pausing your movie, takes a screenshot, advances by N frames
  (taking screenshots along the way), and starts the movie again!
  
  This sketch uses the Java AWT 'robot' class, which allows you to
  create virtual keystrokes (automatic keyboard shortcuts in VLC).
- 
- www.jeffreythompson.org
  */
 
 int numFrames = 5;                // how many frames to automatically capture
