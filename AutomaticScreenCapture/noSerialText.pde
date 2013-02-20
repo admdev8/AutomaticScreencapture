@@ -1,5 +1,5 @@
 
-// nothing connected - let us know...
+// if no Arduino is connected - let us know...
 
 void noSerialText() {
   background(0);

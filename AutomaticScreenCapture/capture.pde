@@ -23,7 +23,7 @@ void capture() {
     robot.keyPress(KeyEvent.VK_ALT);     // option (alt)
     robot.keyPress(KeyEvent.VK_S);       // 's'
 
-    robot.keyRelease(KeyEvent.VK_S);
+    robot.keyRelease(KeyEvent.VK_S);     // release keys or bad things happen!
     robot.keyRelease(KeyEvent.VK_ALT);
     robot.keyRelease(KeyEvent.VK_META);
     delay(pause);
